@@ -1,0 +1,413 @@
+PROJECT_CONTEXT.md
+Project Name
+Working Title: Word Chain
+Elevator Pitch
+Word Chain is a multiplayer word-association game.
+Players build a chain by adding exactly one word to the previous player's phrase.
+Example:
+Player 1: water
+Player 2: water bottle
+Player 3: bottle cap
+Player 4: cap gun
+Player 5: gun powder
+Each new submission must contain exactly two words.
+The first word must be the second word from the previous valid submission.
+The goal is to create clever , valid word connections while earning votes from other players.
+Core Concept
+The game is a mix of:
+word association
+creativity
+social voting
+multiplayer competition
+Unlike traditional word games, players are not creating words from letters.
+• 
+• 
+• 
+• 
+1
+
+They are creating chains of connected concepts.
+Example chain:
+water water bottle bottle cap cap gun gun powder powder snow snow man man cave
+The chain can continue indefinitely.
+Main Rules
+Rule 1
+The game starts with a single word.
+Example:
+water
+Rule 2
+Every future move must contain exactly TWO words.
+Example:
+water bottle
+Valid
+Example:
+water cold bottle
+Invalid
+Example:
+bottle
+Invalid
+2
+
+Rule 3
+The first word of a player's move must match the second word of the previous move.
+Example:
+Previous:
+water bottle
+Next:
+bottle cap
+Valid
+Next:
+water cap
+Invalid
+Rule 4
+The connection must make sense.
+Examples:
+bottle cap
+Valid
+snow man
+Valid
+phone charger
+Valid
+Examples:
+bottle elephant
+3
+
+Likely invalid
+charger banana
+Likely invalid
+Rule 5
+No repeated phrases.
+If:
+water bottle
+already exists in the chain,
+it cannot be used again.
+Rule 6
+No spam.
+Random keyboard input is rejected.
+Example:
+bottle asdfgh
+Invalid
+Rule 7
+Players can vote.
+Every submitted phrase can receive:
+Upvote
+Downvote
+Community voting helps determine phrase quality.
+• 
+• 
+4
+
+Win Condition
+Version 1:
+No permanent winner .
+The game continues endlessly.
+Players earn points.
+Leaderboard decides ranking.
+Future Possibility
+Timed rounds.
+Highest score wins the round.
+Scoring System
+Suggested:
+Valid Submission: +10 points
+Submission Receives Upvote: +2 points
+Submission Receives Downvote: -1 point
+Phrase Chosen as "Best Move": +5 points
+Daily Participation: +5 points
+Voting System
+After a phrase is submitted:
+Other players can vote.
+5
+
+Options:
+Upvote
+Downvote
+Votes affect:
+score
+ranking
+reputation
+Anti-Cheat Validation
+Every submission must pass:
+Validation 1
+Exactly two words.
+Validation 2
+First word matches previous second word.
+Validation 3
+Phrase not already used.
+Validation 4
+No offensive content.
+Validation 5
+Phrase must be meaningful.
+AI can help validate.
+Example:
+phone charger
+Pass
+• 
+• 
+• 
+• 
+• 
+6
+
+charger banana
+Fail
+Screens
+Splash Screen
+Shows:
+Logo
+App name
+Then navigates to login.
+Login Screen
+Options:
+Google Login
+Guest Login
+Home Screen
+Buttons:
+Play
+Leaderboard
+Profile
+Settings
+Shows:
+Current active chain
+Player rank
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+7
+
+Game Lobby Screen
+Shows:
+Current chain
+Number of players online
+Start word
+Button:
+Join Game
+Game Screen
+Displays:
+Current Phrase:
+water bottle
+Input:
+[bottle ____]
+Player enters:
+cap
+System creates:
+bottle cap
+Submit button
+Vote section
+Recent moves list
+Validation Screen
+Success:
+Move accepted
+• 
+• 
+• 
+8
+
+or
+Move rejected
+Reason shown
+Leaderboard Screen
+Displays:
+Global Rank
+Weekly Rank
+Top Players
+Profile Screen
+Displays:
+Username
+Points
+Total Moves
+Upvotes Received
+Win Statistics
+Settings Screen
+Displays:
+Theme
+Notifications
+Sound
+UI Flow
+Splash ↓ Login ↓ Home ↓ Lobby ↓ Game ↓ Results ↓ Home
+Additional Routes:
+Home → Leaderboard
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+9
+
+Home → Profile
+Home → Settings
+Database Design
+Users Table
+users
+id username email avatar_url points created_at
+Games Table
+games
+id status start_word created_at
+status:
+active completed
+Moves Table
+moves
+id game_id user_id first_word second_word full_phrase score created_at
+Example:
+first_word = bottle
+second_word = cap
+full_phrase = bottle cap
+Votes Table
+votes
+10
+
+id move_id user_id vote_type
+vote_type:
+upvote downvote
+Leaderboard Cache Table
+leaderboards
+user_id total_points rank
+AI Validation System
+Purpose:
+Determine whether a phrase is meaningful.
+Input:
+Previous: water bottle
+New: bottle cap
+Output:
+Valid
+Input:
+bottle elephant
+Output:
+Invalid
+Possible Approaches:
+Phase 1
+Cloud LLM API
+11
+
+Simple and accurate.
+Phase 2
+Local model
+Possible future option.
+Can reduce cost.
+Technical Stack
+Frontend
+React
+TypeScript
+Vite
+Mobile Version Later
+React Native
+Expo
+Reason:
+Single codebase.
+Can target:
+Android
+iOS
+Backend
+Node.js
+• 
+• 
+12
+
+Express
+Database
+PostgreSQL
+Authentication
+Google OAuth
+Guest Login
+Realtime
+Socket.IO
+Used for:
+live chain updates
+votes
+online players
+Hosting
+Frontend:
+Vercel
+Backend:
+Railway or Render
+Database:
+Supabase PostgreSQL
+• 
+• 
+• 
+13
+
+MVP Scope
+Must Have:
+Login
+Create account
+Join game
+Submit phrase
+Validation
+Voting
+Leaderboard
+Not Required Yet:
+Friends
+Chat
+Mobile app
+Clans
+Achievements
+Future Roadmap
+Phase 1
+Basic Web MVP
+Login
+Single global chain
+Voting
+Leaderboard
+Phase 2
+Multiple Rooms
+Examples:
+Movies Room
+Science Room
+Gaming Room
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+14
+
+General Room
+Phase 3
+Mobile App
+React Native + Expo
+Android first.
+iOS later .
+Phase 4
+AI Improvements
+Smarter validation.
+Better anti-cheat detection.
+Phrase quality scoring.
+Phase 5
+Competitive Mode
+Timed matches.
+Season rankings.
+Rewards.
+Key Design Philosophy
+Simple to learn.
+Difficult to master .
+Encourages creativity.
+15
+
+Highly social.
+Works on both web and mobile.
+Can grow into a community-driven multiplayer word game.
+16
