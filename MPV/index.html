@@ -7,13 +7,32 @@
 <body>
     <h1>Word Train</h1>
 
-    <p>Current Phrase:</p>
+    <div id="startscreen">
 
-    <div id="currentphrase">water bottle</div>
+        <h2>Starting a New Train</h2>
 
-    <span id="requiredword">bottle</span>
-    <input id="nextwordinput" type="text" placeholder="Next word">
-    <button id = "submitbutton" >Submit</button>
+        <input id="startwordinput" type="text" placeholder="starting word">
+        <button id="startbutton">Start Game</button>
+
+    </div>
+
+    <div id="gamescreen">
+
+        <p>Current Phrase:</p>
+
+        <div id="currentphrase">water bottle</div>
+
+        <span id="requiredword">bottle</span>
+        <input id="nextwordinput" type="text" placeholder="Next word">
+        <button id = "submitbutton" >Submit</button>
+
+        <p id="message"></p>
+
+        <h3>Train History</h3>
+        <div id="history"></div>
+    </div>
+
+
 
     <script src="main.js"></script>
 

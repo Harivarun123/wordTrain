@@ -4,18 +4,20 @@ const currentphraseDiv = document.getElementById("currentphrase");
 const submitBtn = document.getElementById("submitbutton");
 const nextwordinput = document.getElementById("nextwordinput");
 const requiredwordspan = document.getElementById("requiredword");
+const message = document.getElementById("message");
 
 submitBtn.addEventListener("click", function () {
     let nextword = nextwordinput.value.trim(); // to split the input 
 
     if(nextword === ""){
-        console.log("please enter a word");
+        message.textContent = "Please enter a word";
+        nextwordinput.value = "";
         return;
     }
 
     let words = nextword.split(" ");
     if(words.length !== 1){
-        console.log("Please enter a single word");
+        message.textContent = "please enter a single word";
         nextwordinput.value = "";
         return;
     }
@@ -30,5 +32,6 @@ submitBtn.addEventListener("click", function () {
 
     requiredwordspan.textContent = nextword;
 
-    nextwordinput.value = ""; //clears the textbox
+    message.textContent = "";
+    nextwordinput.value = "";
 });
