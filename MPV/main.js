@@ -1,10 +1,33 @@
-let currentphrase = "water bottle";
+let currentword = "";
+let history = [];
 
-const currentphraseDiv = document.getElementById("currentphrase");
 const submitBtn = document.getElementById("submitbutton");
 const nextwordinput = document.getElementById("nextwordinput");
 const requiredwordspan = document.getElementById("requiredword");
 const message = document.getElementById("message");
+
+const startscreen = document.getElementById("startscreen");
+const gamescreen = document.getElementById("gamescreen");
+const startwordinput = document.getElementById("startwordinput");
+const startbutton = document.getElementById("startbutton");
+
+const historyDiv = document.getElementById("history");
+const lengthDiv = document.getElementById("length");
+
+gamescreen.style.display = "none";
+startbutton.addEventListener("click",function(){
+    let startword = startwordinput.value.trim();
+
+    if(startword === ""){
+        return;
+    }
+    startscreen.style.display = "none";
+    gamescreen.style.display = "block";
+
+    currentword = startword;
+
+    requiredwordspan.textContent = startword;
+});
 
 submitBtn.addEventListener("click", function () {
     let nextword = nextwordinput.value.trim(); // to split the input 
@@ -23,12 +46,16 @@ submitBtn.addEventListener("click", function () {
     }
 
 
-    let currentwords = currentphrase.split(" ");
-    let lastword = currentwords[1]; // in previous phrase
-    let newphrase = lastword + " " + nextword;
+    let newphrase = currentword + " " + nextword;
+    history.push(newphrase);
+    lengthDiv.textContent = "Length : " + history.length; 
+    historyDiv.innerHTML = "";//clears the history
+
+    for (let i = history.length - 1; i >= 0; i--) {
+        historyDiv.innerHTML += history[i] + "<br>";
+    }
     
-    currentphrase = newphrase;  // updates the current phrase
-    currentphraseDiv.textContent = currentphrase; // updates the displayed current phrase
+    currentword = nextword;  // updates the current phrase
 
     requiredwordspan.textContent = nextword;
 
