@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Word Train</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -13,21 +14,28 @@
 
         <input id="startwordinput" type="text" placeholder="starting word">
         <button id="startbutton">Start Game</button>
+         <p id="startmessage"></p>
 
     </div>
 
     <div id="gamescreen">
 
-        <p id="length">Length : 0</p>
+        <div id="gamearea">
+            <p id="length">Length : 0</p>
 
-        <span id="requiredword">bottle</span>
-        <input id="nextwordinput" type="text" placeholder="Next word">
-        <button id = "submitbutton" >Submit</button>
+            <span id="requiredword"></span>
+            <input id="nextwordinput" type="text" placeholder="Next word">
+            <button id = "submitbutton" >Submit</button>
+            <button id="restartbutton">Restart Game</button>
 
-        <p id="message"></p>
+            <p id="message"></p>
+        </div>
 
-        <h3>Train History</h3>
-        <div id="history"></div>
+        <div id="historyarea">
+            <h3>Train History</h3>
+            <div id="history"></div>
+        </div>
+            
     </div>
 
 
