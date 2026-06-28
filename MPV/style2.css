@@ -1,16 +1,20 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
-    background-color: #283618;
+    background-color: #c1121f;
 }
 
 h1 {
     margin-bottom: 30px;
-    color: #fefae0;
+    color: #fdf0d5;
 }
 
 h2 {
-    color: #fefae0;
+    color: #fdf0d5;
+}
+
+span {
+    color: #fdf0d5;
 }
 
 input {
@@ -32,14 +36,17 @@ button {
     border-color: #669bbc;
 }
 
+p {
+    color: #fdf0d5;
+}
 #startscreen,
 #gamescreen {
     width: 500px;
     margin: 50px auto;
     padding: 20px;
-    border: 5px solid #bc6c25;
+    border: 5px solid #669bbc;
     border-radius: 35px;
-    background-color: #606c38;
+    background-color: #003049;
 }
 
 #gamearea {
@@ -47,16 +54,17 @@ button {
 }
 
 #historyarea {
-    border: 2px solid #fefae0;
+    border: 4px solid #669bbc;
     padding: 20px;
     border-radius: 20px;
-    background-color: #dda15e;
+    background-color: #fdf0d5;
     margin-top: 20px;
 
 }
 
 #historyarea h3 {
     margin-top: 0;
+    color: #c1121f;
 }
 
 #history {
@@ -78,3 +86,5 @@ button {
     font-weight: bold;
     font-size: 18px;
 }
+
+
