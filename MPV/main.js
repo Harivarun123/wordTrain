@@ -80,7 +80,11 @@ startbutton.addEventListener("click", function() {
     saveGame();
 });
 
-submitBtn.addEventListener("click", function() {
+submitBtn.addEventListener("click", async function() {
+
+    if (submitBtn.disabled) {
+        return;
+    }
     let nextword = nextwordinput.value.trim().toLowerCase();
 
     if (nextword === "") {
@@ -98,6 +102,17 @@ submitBtn.addEventListener("click", function() {
     if(usedwords.includes(nextword)){
         message.textContent = "Word already used";
         nextwordinput.value = "";
+        return;
+    }
+
+    submitBtn.disabled = true;
+    message.textContent = "checking...";
+    const result = await validateWithAI(currentword, nextword);
+
+    if (!result.valid) {
+        message.textContent = result.reason;
+        nextwordinput.value = "";
+        submitBtn.disabled = false;
         return;
     }
     usedwords.push(nextword);
@@ -118,6 +133,7 @@ submitBtn.addEventListener("click", function() {
 
     message.textContent = "";
     nextwordinput.value = "";
+    submitBtn.disabled = false;
 });
 
 restartbutton.addEventListener("click", function() {
@@ -166,3 +182,4 @@ function loadGame() {
     history = gameData.history;
     usedwords = gameData.usedwords;
 }
+

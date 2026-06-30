@@ -1,0 +1,4 @@
+const AI_PROVIDER = "gemini";
+
+const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
+const GROQ_API_KEY = "YOUR_GROQ_API_KEY";
