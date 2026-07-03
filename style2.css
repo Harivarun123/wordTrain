@@ -35,6 +35,10 @@ button {
     color: #fdf0d5;
     border-color: #669bbc;
 }
+button:hover{
+    transform:translateY(-2px);
+    transition:.2s;
+}
 
 p {
     color: #fdf0d5;

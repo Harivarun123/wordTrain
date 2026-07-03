@@ -54,7 +54,7 @@ nextwordinput.addEventListener("keydown", function(event) {
     }
 });
 
-startbutton.addEventListener("click", function() {
+startbutton.addEventListener("click", async function() {
     let startword = startwordinput.value.trim().toLowerCase();
 
     if (startword === "") {
@@ -65,6 +65,14 @@ startbutton.addEventListener("click", function() {
     if (/\s/.test(startword)) {
         startmessage.textContent = "Please enter a single word";
         startwordinput.value = "";
+        return;
+    }
+    const result = await validateStartingWord(startword);
+
+    if (!result.valid) {
+        startmessage.textContent = result.reason;
+        nextwordinput.value = "";
+        nextwordinput.focus();
         return;
     }
 
@@ -112,6 +120,7 @@ submitBtn.addEventListener("click", async function() {
     if (!result.valid) {
         message.textContent = result.reason;
         nextwordinput.value = "";
+        nextwordinput.focus();
         submitBtn.disabled = false;
         return;
     }
@@ -182,4 +191,3 @@ function loadGame() {
     history = gameData.history;
     usedwords = gameData.usedwords;
 }
-
